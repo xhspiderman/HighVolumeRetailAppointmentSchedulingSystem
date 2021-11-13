@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html>
+
+<head>
+    <title>New appointment spots added</title>
+    <link rel="stylesheet" type="text/css" href="/css/global.css"/>
+</head>
+
+<body>
+
+<div style="margin-left: 2em;">
+    <h4>New appointment spots have been added successfully</h4>
+    <p>Appointment Type：<span th:text="${appointmentInventory.name}"></span></p>
+    <p>Appointment Time：<span th:text="${appointmentInventory.description} + ':00'"></span></p>
+    <p>Number of Spots：<span th:text="${appointmentInventory.totalSpot}"></span></p>
+</div>
+</body>
+
+</html>

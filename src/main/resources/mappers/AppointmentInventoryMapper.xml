@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.haoxu.highvolumeretailstoreappointmentsystem.db.mappers.AppointmentInventoryMapper">
+  <resultMap id="BaseResultMap" type="com.haoxu.highvolumeretailstoreappointmentsystem.db.po.AppointmentInventory">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="store_id" jdbcType="INTEGER" property="storeId" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="active" jdbcType="INTEGER" property="active" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="total_spot" jdbcType="INTEGER" property="totalSpot" />
+    <result column="available_spot" jdbcType="INTEGER" property="availableSpot" />
+    <result column="locked_spot" jdbcType="INTEGER" property="lockedSpot" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, store_id, description, active, start_time, end_time, total_spot, available_spot, 
+    locked_spot
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from appointment_inventory
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from appointment_inventory
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.haoxu.highvolumeretailstoreappointmentsystem.db.po.AppointmentInventory">
+    insert into appointment_inventory (id, name, store_id, 
+      description, active, start_time, 
+      end_time, total_spot, available_spot, 
+      locked_spot)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{storeId,jdbcType=INTEGER}, 
+      #{description,jdbcType=VARCHAR}, #{active,jdbcType=INTEGER}, #{startTime,jdbcType=TIMESTAMP}, 
+      #{endTime,jdbcType=TIMESTAMP}, #{totalSpot,jdbcType=INTEGER}, #{availableSpot,jdbcType=INTEGER}, 
+      #{lockedSpot,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.haoxu.highvolumeretailstoreappointmentsystem.db.po.AppointmentInventory">
+    insert into appointment_inventory
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="storeId != null">
+        store_id,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="active != null">
+        active,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="totalSpot != null">
+        total_spot,
+      </if>
+      <if test="availableSpot != null">
+        available_spot,
+      </if>
+      <if test="lockedSpot != null">
+        locked_spot,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="storeId != null">
+        #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="active != null">
+        #{active,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="totalSpot != null">
+        #{totalSpot,jdbcType=INTEGER},
+      </if>
+      <if test="availableSpot != null">
+        #{availableSpot,jdbcType=INTEGER},
+      </if>
+      <if test="lockedSpot != null">
+        #{lockedSpot,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.haoxu.highvolumeretailstoreappointmentsystem.db.po.AppointmentInventory">
+    update appointment_inventory
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="storeId != null">
+        store_id = #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="active != null">
+        active = #{active,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null">
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="totalSpot != null">
+        total_spot = #{totalSpot,jdbcType=INTEGER},
+      </if>
+      <if test="availableSpot != null">
+        available_spot = #{availableSpot,jdbcType=INTEGER},
+      </if>
+      <if test="lockedSpot != null">
+        locked_spot = #{lockedSpot,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.haoxu.highvolumeretailstoreappointmentsystem.db.po.AppointmentInventory">
+    update appointment_inventory
+    set name = #{name,jdbcType=VARCHAR},
+      store_id = #{storeId,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      active = #{active,jdbcType=INTEGER},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      total_spot = #{totalSpot,jdbcType=INTEGER},
+      available_spot = #{availableSpot,jdbcType=INTEGER},
+      locked_spot = #{lockedSpot,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="queryAppointmentInventoryByStatus" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from appointment_inventory
+    where active = #{id,jdbcType=INTEGER}
+  </select>
+
+  <update id="lockSpot" parameterType="java.lang.Integer">
+    update appointment_inventory
+    set available_spot = available_spot - 1,
+        locked_spot = locked_spot + 1
+    where id = #{id,jdbcType=INTEGER}
+      and  available_spot &gt; 0
+  </update>
+
+  <update id="deductSpot" parameterType="java.lang.Integer">
+    UPDATE appointment_inventory
+    SET locked_spot = locked_spot - 1
+    WHERE id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <update id="revertSpot" parameterType="java.lang.Integer">
+    update appointment_inventory
+    set available_spot = available_spot + 1,
+        locked_spot = locked_spot - 1
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
